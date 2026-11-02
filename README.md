@@ -52,3 +52,7 @@ python -m unittest discover -s tests -v
 1. 使用真实输入建立基准数据及明确误差界限。
 2. 补充数据导入和交互界面，按需求接入 SDK、设备或模型。
 3. 记录独立测试集、资源消耗和失败案例，再评估部署条件。
+
+## 公开数据复测
+
+`python scripts/validate_public_data.py` 自动下载 Middlebury Cones/Teddy 小样本并输出报告与对比图（需要 curl）。12组真实图片受控裁切通过；原始立体图存在超出纯平移模型的视差，不能据此宣称真实货架拼接通过。详见[验证记录](docs/VALIDATION.md)。

@@ -1,0 +1,144 @@
+{
+  "dataset": "Middlebury 2003 Cones and Teddy, quarter resolution",
+  "source": "https://vision.middlebury.edu/stereo/data/scenes2003/",
+  "permission": "https://vision.middlebury.edu/stereo/data/",
+  "citation": "D. Scharstein and R. Szeliski. High-accuracy stereo depth maps using structured light. CVPR 2003, pp. 195\u2013202.",
+  "files": [
+    {
+      "path": "cones-im2.png",
+      "url": "https://vision.middlebury.edu/stereo/data/scenes2003/newdata/cones/im2.png",
+      "sha256": "e9875cec273b9c7a36ab8a0556b5c8451dd90cf50b5c8f30f4ab3bc8f201da92"
+    },
+    {
+      "path": "cones-im6.png",
+      "url": "https://vision.middlebury.edu/stereo/data/scenes2003/newdata/cones/im6.png",
+      "sha256": "a3795d564445b1e041a88fec490d4140efec87c9a4c64c1b56f7240c3a4fc727"
+    },
+    {
+      "path": "teddy-im2.png",
+      "url": "https://vision.middlebury.edu/stereo/data/scenes2003/newdata/teddy/im2.png",
+      "sha256": "092142723fd63f1f4867daaf66d85e8228a4fe2c704becd0091b7b599e618f00"
+    },
+    {
+      "path": "teddy-im6.png",
+      "url": "https://vision.middlebury.edu/stereo/data/scenes2003/newdata/teddy/im6.png",
+      "sha256": "b13366171eaa15cbb30c1cfb6bb0d18bec7a3977c92c49a641245dc40f75ec9b"
+    }
+  ],
+  "controlled_crops": [
+    {
+      "scene": "cones",
+      "view": "im2",
+      "expected_overlap": 40,
+      "recovered_overlap": 40,
+      "rmse": 7.577117049528468e-18,
+      "passed": true
+    },
+    {
+      "scene": "cones",
+      "view": "im2",
+      "expected_overlap": 80,
+      "recovered_overlap": 80,
+      "rmse": 1.1995882860393953e-17,
+      "passed": true
+    },
+    {
+      "scene": "cones",
+      "view": "im2",
+      "expected_overlap": 120,
+      "recovered_overlap": 120,
+      "rmse": 1.350798057612214e-17,
+      "passed": true
+    },
+    {
+      "scene": "cones",
+      "view": "im6",
+      "expected_overlap": 40,
+      "recovered_overlap": 40,
+      "rmse": 6.383916475092876e-18,
+      "passed": true
+    },
+    {
+      "scene": "cones",
+      "view": "im6",
+      "expected_overlap": 80,
+      "recovered_overlap": 80,
+      "rmse": 1.1212931935171273e-17,
+      "passed": true
+    },
+    {
+      "scene": "cones",
+      "view": "im6",
+      "expected_overlap": 120,
+      "recovered_overlap": 120,
+      "rmse": 1.4851659698566536e-17,
+      "passed": true
+    },
+    {
+      "scene": "teddy",
+      "view": "im2",
+      "expected_overlap": 40,
+      "recovered_overlap": 40,
+      "rmse": 8.335068208159134e-18,
+      "passed": true
+    },
+    {
+      "scene": "teddy",
+      "view": "im2",
+      "expected_overlap": 80,
+      "recovered_overlap": 80,
+      "rmse": 1.18130148553484e-17,
+      "passed": true
+    },
+    {
+      "scene": "teddy",
+      "view": "im2",
+      "expected_overlap": 120,
+      "recovered_overlap": 120,
+      "rmse": 1.4147755335900184e-17,
+      "passed": true
+    },
+    {
+      "scene": "teddy",
+      "view": "im6",
+      "expected_overlap": 40,
+      "recovered_overlap": 40,
+      "rmse": 7.048404421719633e-18,
+      "passed": true
+    },
+    {
+      "scene": "teddy",
+      "view": "im6",
+      "expected_overlap": 80,
+      "recovered_overlap": 80,
+      "rmse": 1.170817428148987e-17,
+      "passed": true
+    },
+    {
+      "scene": "teddy",
+      "view": "im6",
+      "expected_overlap": 120,
+      "recovered_overlap": 120,
+      "rmse": 1.3752251589817535e-17,
+      "passed": true
+    }
+  ],
+  "stereo_stress": [
+    {
+      "scene": "cones",
+      "scope": "Out-of-contract: depth-dependent disparity, not one global translation",
+      "accepted": true,
+      "selected_overlap": 404,
+      "overlap_rmse": 0.14979228286661747,
+      "accuracy_claim": null
+    },
+    {
+      "scene": "teddy",
+      "scope": "Out-of-contract: depth-dependent disparity, not one global translation",
+      "accepted": true,
+      "selected_overlap": 419,
+      "overlap_rmse": 0.10793287998532053,
+      "accuracy_claim": null
+    }
+  ]
+}
