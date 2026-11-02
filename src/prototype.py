@@ -7,6 +7,14 @@ def finite(a,ndim=None):
  a=np.asarray(a,dtype=float)
  if not np.isfinite(a).all() or not a.size or (ndim is not None and a.ndim!=ndim): raise ValueError('Invalid shape, empty or nonfinite input')
  return a
+def correlation(a,b):
+ # Scaling before centering avoids overflow and preserves NCC under unit changes.
+ a=a/max(float(np.max(np.abs(a))),np.finfo(float).tiny)
+ b=b/max(float(np.max(np.abs(b))),np.finfo(float).tiny)
+ a=a-a.mean();b=b-b.mean()
+ den=np.linalg.norm(a)*np.linalg.norm(b)
+ return float(a@b/den) if den>0 else -1.
+
 def process(left,right,overlap_min=12,overlap_max=None):
  left=finite(left,2);right=finite(right,2)
  if left.shape[0]!=right.shape[0]:raise ValueError('Image heights mismatch')
@@ -15,8 +23,7 @@ def process(left,right,overlap_min=12,overlap_max=None):
  if overlap_min<2 or upper<overlap_min:raise ValueError('Invalid overlap range')
  scores=[]
  for n in range(overlap_min,upper+1):
-  a=left[:,-n:].ravel();b=right[:,:n].ravel();a=a-a.mean();b=b-b.mean();den=np.linalg.norm(a)*np.linalg.norm(b)
-  scores.append(float(a@b/den) if den>1e-12 else -1.)
+  scores.append(correlation(left[:,-n:].ravel(),right[:,:n].ravel()))
  best=overlap_min+int(np.argmax(scores))
  if max(scores)<.1:raise ValueError('No reliable horizontal overlap')
  ramp=np.linspace(0,1,best)[None,:];blend=left[:,-best:]*(1-ramp)+right[:,:best]*ramp
