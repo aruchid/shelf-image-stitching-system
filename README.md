@@ -56,3 +56,23 @@ python -m unittest discover -s tests -v
 ## 公开数据复测
 
 `python scripts/validate_public_data.py` 自动下载 Middlebury Cones/Teddy 小样本并输出报告与对比图（需要 curl）。12组真实图片受控裁切通过；原始立体图存在超出纯平移模型的视差，不能据此宣称真实货架拼接通过。详见[验证记录](docs/VALIDATION.md)。
+
+
+### Cones 真实双视角效果
+
+下图从左到右为：左输入、右输入、当前基线拼接结果。原图下载后转为灰度参与计算。
+
+![Middlebury Cones：左右真实输入与基线拼接效果](artifacts/public-data/cones-stress.png)
+
+### Teddy 真实双视角效果
+
+![Middlebury Teddy：左右真实输入与基线拼接效果](artifacts/public-data/teddy-stress.png)
+
+| 场景 | 算法选取的重叠宽度 | 对齐后重叠区灰度 RMSE |
+| --- | ---: | ---: |
+| Cones | 404 px | 0.14979 |
+| Teddy | 419 px | 0.10793 |
+
+灰度范围为 0—1。以上指标衡量对齐后两张输入在重叠区的差异，不是与全景真值的误差。原始双视角存在随深度变化的视差，因此图中仍有错位与融合重影；这些是公开真实图像的压力测试结果，不代表真实货架拼接验收通过。前述 12 组受控裁切测试与这里的双视角测试分别报告。
+
+数据来源：[Middlebury 2003 Cones / Teddy](https://vision.middlebury.edu/stereo/data/scenes2003/)。按[数据使用说明](https://vision.middlebury.edu/stereo/data/)引用：D. Scharstein and R. Szeliski, *High-accuracy stereo depth maps using structured light*, CVPR 2003, pp. 195–202。原图链接、SHA256 和完整指标见[运行报告](artifacts/public-data/report.json)。
